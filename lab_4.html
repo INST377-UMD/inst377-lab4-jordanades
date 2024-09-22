@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            margin: 20px;
+        }
+
+        .section {
+            border: 2px solid rgb(116, 17, 229);
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="pageHeading">INST377 - Lab 4</h1>
+
+    <div class="container">
+        <div class="section">
+            <form id="alertForm">
+                <label for="name">Enter Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <button type="button" onclick="alertName()">Alert Me</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <div class="section">
+            <form id="textTesterForm">
+                <label for="textInput">Enter some text:</label>
+                <input type="text" id="textInput" name="textInput">
+                <button type="button" onclick="validateText()">Validate Text</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        function alertName() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert("Hi " + name + "!");
+            }
+        }
+
+        let isBlue = true;
+        function changeColor() {
+            document.body.style.backgroundColor = isBlue ? 'green' : 'blue';
+            isBlue = !isBlue;
+        }
+
+        function validateText() {
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            const text = document.getElementById('textInput').value;
+            if (validation.test(text)) {
+                alert("Text contains special characters!");
+            } else {
+                alert("Text is valid!");
+            }
+        }
+
+        function addText() {
+            const heading = document.getElementById('pageHeading');
+            heading.textContent += " Add Text";
+        }
+    </script>
+</body>
+</html>
